@@ -15,8 +15,9 @@ impl SubscriberRepository{
         if SUBSCRIBERS.get(product_type).is_none() {
             SUBSCRIBERS.insert(String::from(product_type), DashMap::new());
         };
+
         SUBSCRIBERS.get(product_type).unwrap()
-        .insert(subscriber_value.url.clone(), subscriber_value);
+            .insert(subscriber_value.url.clone(), subscriber_value);
         return subscriber;
     }
 
@@ -27,5 +28,19 @@ impl SubscriberRepository{
 
         return SUBSCRIBERS.get(product_type).unwrap().iter()
             .map(|f| f.value().clone()).collect();
+    }
+
+    pub fn delete(product_type: &str, url: &str) -> Option<Subscriber> {
+        if SUBSCRIBERS.get(product_type).is_none() {
+            SUBSCRIBERS.insert(String::from(product_type), DashMap::new());
+        };
+        
+        let result = SUBSCRIBERS.get(product_type).unwrap()
+            .remove(url);
+        if !result.is_none() {
+            return Some(result.unwrap().1);
+        }
+
+        return None;
     }
 }
