@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -105,3 +105,23 @@ Apabila hanya menggunakan Model tanpa pemisahan "Service" dan "Repository", inte
 Setelah melakukan eksplorasi lebih lanjut mengenai Postman, saya mengetahui bahwa Postman dapat digunakan untuk melakukan pengujian API secara komprehensif melalui berbagai HTTP method seperti GET dan POST. Fitur utama yang ditawarkan adalah kemampuannya untuk mengirimkan request dengan custom body, menambahkan token, dan memeriksa respons dari server. Selain fungsionalitas pengujian, Postman juga menawarkan kemampuan pembuatan dokumentasi API yang terstruktur. Saya yakin Postman akan menjadi alat yang sangat membantu dalam Tugas Kelompok dan proyek lainnya di masa mendatang.
 
 #### Reflection Publisher-3
+
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+    Dalam kasus ini, kita menggunakan Observer Pattern dengan variasi Push model, dimana Publisher secara aktif melakukan push data dan notifikasi kepada Subscriber. Hal ini terlihat jelas dari implementasi method `NotificationService::notify` yang memanggil method `update()` untuk setiap Subscriber yang telah berlangganan pada tipe produk tertentu, dengan Publisher menginisasi pengiriman data tanpa menunggu permintaan dari Subscriber. Penggunaan Push model memungkinkan pengiriman informasi secara real-time sehingga proses notifikasi menjadi lebih efisien dan responsif.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+    - Kelebihan
+        
+        Kelebihan utama menggunakan Pull model adalah efisiensi sumber daya, dimana Subscriber hanya mengambil informasi saat diperlukan sehingga dapat mengurangi beban pada Publisher.
+
+    - Kekurangan
+        
+        Kekurangan utama Pull model adalah keterlambatan informasi (latency) karena notifikasi akan tertunda jika Subscriber tidak melakukan request secara aktif. Hal ini bertentangan dengan tujuan utama notifikasi, yaitu memberikan informasi secara real-time, sehingga berpotensi menurunkan efektivitas sistem.
+   
+    Meskipun Pull model menawarkan fleksibilitas dalam pengambilan data, pendekatan Push model lebih sesuai dengan kebutuhan BambangShop.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+    Apabila tidak menggunakan multi-threading untuk notifikasi, program akan mengalami beberapa kendala signifikan. Proses pengiriman notifikasi akan berjalan secara sinkronus dalam satu thread, yang berarti setiap notifikasi harus menunggu notifikasi sebelumnya selesai terlebih dahulu. Hal ini menyebabkan delay yang substansial, terutama ketika terdapat banyak notifikasi yang perlu dikirim secara bersamaan. Hal ini mengakibatkan kinerja aplikasi menurun secara drastis, waktu eksekusi menjadi lebih lambat, dan kemampuan untuk mengirimkan notifikasi ke beberapa Subscriber secara bersamaan menjadi terbatas. Dengan demikian, tidak menggunakan multi-threading akan berdampak negatif pada performa dan efisiensi proses notifikasi dalam aplikasi.
