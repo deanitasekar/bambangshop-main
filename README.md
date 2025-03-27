@@ -80,7 +80,7 @@ This is the place for you to write reflections:
 
 1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model struct is enough?
 
-    Dalam konteks aplikasi BambangShop, penggunaan Subscriber sebagai interface akan lebih strategis untuk skalabilitas di masa depan meskipun single Model struct dapat memenuhi persyaratan implementasi saat ini. Pendekatan ini memungkinkan perluasan mekanisme notifikasi di masa mendatang tanpa harus mengubah kode yang sudah ada. Walaupun BambangShop saat ini hanya memiliki satu tipe Subscriber, implementasi pendekatan berbasis interface dapat meningkatkan flexibility dan maintainibility.
+    Meskipun single Model struct sudah cukup untuk memenuhi kebutuhan BambangShop saat ini, penggunaan interface tetap lebih direkomendasikan untuk skalabilitas di masa depan. Mendefinisikan Subscriber sebagai interface memungkinkan pengembangan alternatif implementasi Subscriber tanpa perlu mengubah kode yang sudah ada. Meskipun BambangShop saat ini belum memerlukan kompleksitas tersebut, mengadopsi interface sejak awal pengembangan akan memudahkan skalabilitas dan adaptasi jika di kemudian hari dibutuhkan berbagai tipe Subscriber.
 
 2. id in Program and url in Subscriber is intended to be unique. Explain based on your understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently use is necessary for this case?
 
