@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -91,5 +91,17 @@ This is the place for you to write reflections:
     Dalam pengembangan BambangShop menggunakan Rust, Singleton dan DashMap memiliki peran penting untuk menjamin keamanan dan integritas data. DashMap secara khusus menyediakan mekanisme thread-safe yang memungkinkan akses dan manipulasi variabel Subscribers secara aman oleh beberapa thread secara bersamaan, dengan mekanisme locking internal yang efisien. Meskipun Singleton Pattern dapat menjamin hanya satu instance yang ada, hal ini tidak selalu menawarkan keamanan thread secara otomatis. Oleh karena itu, penggunaan DashMap tetap lebih baik karena tidak hanya memastikan keunikan instance, tetapi juga menjamin operasi yang aman dan efisien dalam kasus concurrent.
 
 #### Reflection Publisher-2
+
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+Pemisahan "Service" dan "Repository" dari Model merupakan penerapan penting dari prinsip Separation of Concerns dan Single Responsibility Principle. Meskipun Model dalam MVC mencakup penyimpanan data dan logika bisnis, memisahkan "Repository" yang berfokus pada penyimpanan data dan "Service" yang berfokus pada logika bisnis. Dengan pendekatan ini, kode lebih mudah dipelihara, diuji, dan dimodifikasi, karena perubahan pada logika bisnis tidak akan mempengaruhi mekanisme penyimpanan data dan sebaliknya. Dengan demikian, pemisahan "Service" dan "Repository" meningkatkan skalabilitas, readability, dan flexibility.
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+Apabila hanya menggunakan Model tanpa pemisahan "Service" dan "Repository", interaksi antarmodel (Program, Subscriber, dan Notification) akan menyebabkan Model menjadi bloated (terlalu padat dengan berbagai tanggung jawab). Setiap Model akan menambahkan method tambahan secara terpaksa, akan menurunkan modularitas dan maintainability. Dengan interaksi antarmodel secara langsung, kompleksitas kode akan bertambah ketika ingin melakukan modifikasi pada salah satu bagian. 
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+Setelah melakukan eksplorasi lebih lanjut mengenai Postman, saya mengetahui bahwa Postman dapat digunakan untuk melakukan pengujian API secara komprehensif melalui berbagai HTTP method seperti GET dan POST. Fitur utama yang ditawarkan adalah kemampuannya untuk mengirimkan request dengan custom body, menambahkan token, dan memeriksa respons dari server. Selain fungsionalitas pengujian, Postman juga menawarkan kemampuan pembuatan dokumentasi API yang terstruktur. Saya yakin Postman akan menjadi alat yang sangat membantu dalam Tugas Kelompok dan proyek lainnya di masa mendatang.
 
 #### Reflection Publisher-3
