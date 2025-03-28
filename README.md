@@ -98,7 +98,7 @@ This is the place for you to write reflections:
 
 2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
 
-    Apabila hanya menggunakan Model tanpa pemisahan "Service" dan "Repository", interaksi antarmodel (Program, Subscriber, dan Notification) akan menyebabkan Model menjadi bloated (terlalu padat dengan berbagai tanggung jawab). Setiap Model akan menambahkan method tambahan secara terpaksa, akan menurunkan modularitas dan maintainability. Dengan interaksi antarmodel secara langsung, kompleksitas kode akan bertambah ketika ingin melakukan modifikasi pada salah satu bagian. 
+    Apabila hanya menggunakan Model tanpa pemisahan "Service" dan "Repository", interaksi antarmodel (Program, Subscriber, dan Notification) akan menyebabkan Model menjadi bloated (terlalu padat dengan berbagai tanggung jawab). Setiap Model akan menambahkan method tambahan secara terpaksa sehingga menurunkan modularitas dan maintainability. Dengan interaksi antarmodel secara langsung, kompleksitas kode akan bertambah ketika ingin melakukan modifikasi pada salah satu bagian. 
 
 3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
 
